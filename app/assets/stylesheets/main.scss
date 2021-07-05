@@ -9,7 +9,62 @@ body{
     height: 100%;
     width: 100%;
 }
+
+h3{
+    margin: 0;
+    padding: 0;
+}
+
+.header{
+    position: fixed;
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    z-index: 1000;
+    background: url(background-site.jpg) center no-repeat; 
+    background-size: cover;
+    border-bottom: 3px solid black;
+
+}
+
+.h_container{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin: 10px 20px 10px 10px;
+}
+
+.h_logo{
+    font-size: 40px;
+    margin-right: 100px;
+    font-weight: 700;
+    color: #fff;
+    text-shadow: 2px 2px 2px #242424;
+}
+
+.info_bar{
+    font-size: 15px;
+    font-weight: 700;
+    text-transform: uppercase;
+
+}
+
+.info_bar_link{
+    display: inline-block;
+    vertical-align: top;
+    margin: 0 10px;
+    text-decoration: none;
+    color: #fff;
+    transition: 0.2s linear;
+}
+
+.info_bar_link:hover{
+    color: #242424;
+}
+
 .container{
+    height: 100%;
+    width: 100%;
     display: flex;
     justify-content: center;
 }
@@ -17,6 +72,83 @@ body{
 .page_container{
     max-width: 1000px;
     height: 100%;
+    margin-top: 100px;
+    flex-wrap: wrap;
+    justify-content: center;
+    flex-direction: column;
+    align-items: center;
+}
+
+.scrollBtn{
+    position: fixed;
+    background-color: black;
+    color: blanchedalmond;
+    font-size: 23px;
+    padding: 15px 15px;
+    left: 5%;
+    bottom: 10%;
+    border-radius: 50%;
+    cursor: pointer;
+}
+
+.basket_container{
+    right: 5%;
+    position: fixed;
+    margin-top: 80px;
+}
+
+.basket_amount{
+    position: fixed;
+    background-color: goldenrod;
+    font-size: 20x;
+    font-weight: 700;
+    padding: 0 6px;
+    right: 5%;
+    border-radius: 50%;
+}
+
+.basket_icon{
+    display: inline-block;
+    vertical-align: top;
+    padding: 5px 5px;
+    font-size: 14px;
+    font-weight: 700;
+    color:#fff;
+    transition: 0.1s linear;
+    border: 3px solid black;
+    background:#fff;
+    cursor: pointer;
+}
+
+.basket_icon:hover{
+    color: black;
+    border: 3px solid #242424;
+    background:goldenrod;
+}
+
+.goods_nav{
+    display: flex;
+    justify-content: center;
+}
+
+.btn_goods_nav{
+    display: inline-block;
+    vertical-align: top;
+    margin: 0 10px;
+    text-decoration: none;
+    color: black;
+    transition: 0.2s linear;
+    font-size: 15px;
+    font-weight: 900;
+    text-transform: uppercase;
+    border:none;
+    background: none;
+    cursor: pointer;
+}
+
+.btn_goods_nav:hover{
+    color: #fff;
+    background: black;
 }
 
 .goods_ul{
@@ -30,11 +162,26 @@ body{
     flex-direction: column;
     align-items: center;
     justify-content: center;
-    border: 2px solid black;
-    margin: 15px;
+    border: 3px solid black;
+    margin: 20px;
     padding: 10px;
 }
 
 .good_contant{
     margin: 5px;
+}
+
+.to_basket_btn{
+    padding: 5px 25px;
+    font-size: 14px;
+    font-weight: 700;
+    transition: 0.1s linear;
+    border: 2px solid black;
+    background:none;
+    cursor: pointer;
+}
+
+.to_basket_btn:hover{
+    color: #fff;
+    background:black;
 }

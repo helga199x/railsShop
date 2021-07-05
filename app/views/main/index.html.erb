@@ -1,14 +1,44 @@
 
+<header class="header">
+    <div class="h_container">
+        <div class="h_logo">Vinlass</div>
+        <div class="info_bar">
+            <a class="info_bar_link" href="">Main page</a>
+            <a class="info_bar_link" href="">Our work time</a>
+            <a class="info_bar_link" href="">Menu</a>
+            <a class="info_bar_link" href="">Conctacts</a>
+        </div>
+    </div>
+</header>
+
 <div class="container">
     <div class="page_container">
+        <div class="scrollBtn">
+            <h3>up</h3>
+        </div>
+        <div class="basket_container">
+            <div class="basket_amount">0</div>
+            <button class="basket_icon">
+                <%=image_tag("basket.png", width: "40", height: "40", alt: "Basket")%> 
+            </button>
+        </div>
+        <div class="goods_nav">
+                <button data-f="all" class="btn_goods_nav">All</button>
+                <button data-f="pizza" class="btn_goods_nav">Pizza</button>
+                <button data-f="burger" class="btn_goods_nav">Burgers</button>
+                <button data-f="drink" class="btn_goods_nav">Drinks</button>
+                <button data-f="sushi" class="btn_goods_nav">Sushi</button>
+                <button data-f="cake" class="btn_goods_nav">Cakes</button>
+        </div>
+
         <ul class="goods_ul">
             <% @good.map do |i| %>
-            <li class="good_container <%="#{i.id}"%>">
+            <li class="good_container <%="#{i.category}"%>">
                 <div class="good_contant">
-                    <img src="<%="#{i.img}"%>" width="150" height="150">
+                    <img src="<%="#{i.img}"%>" width="180" height="180">
                 </div>
                 <div class="good_contant">
-                    <%="#{i.name}"%>
+                    <h3><%="#{i.name}"%></h3>
                 </div>
                 <div class="good_contant">
                     Price: <%="#{i.price} $"%>
@@ -17,10 +47,12 @@
                     Weight: ~<%="#{i.weight} kg"%>
                 </div>
                 <div class="good_contant">
-                    <button class="to_backet_btn">To backet</button>
+                    <button class="to_basket_btn">To backet</button>
                 </div>
             </li>
             <% end %>
         </ul>
     </div>
 </div>
+
+<%= javascript_pack_tag 'main', 'data-turbolinks-track': 'reload' %>
