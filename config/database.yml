@@ -1,0 +1,21 @@
+
+default: &default
+  adapter: mysql2
+  encoding: utf8mb4
+  pool: 5
+  username: railsServer
+  password: railsServer
+
+development:
+  <<: *default
+  database: railsShop_development
+
+test:
+  <<: *default
+  database: railsShop_test
+
+production:
+  <<: *default
+  database: railsShop_production
+  username: railsShop
+  password: <%= ENV['RAILSSHOP_DATABASE_PASSWORD'] %>
