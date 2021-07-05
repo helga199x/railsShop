@@ -1,0 +1,26 @@
+
+<div class="container">
+    <div class="page_container">
+        <ul class="goods_ul">
+            <% @good.map do |i| %>
+            <li class="good_container <%="#{i.id}"%>">
+                <div class="good_contant">
+                    <img src="<%="#{i.img}"%>" width="150" height="150">
+                </div>
+                <div class="good_contant">
+                    <%="#{i.name}"%>
+                </div>
+                <div class="good_contant">
+                    Price: <%="#{i.price} $"%>
+                </div>
+                <div class="good_contant">
+                    Weight: ~<%="#{i.weight} kg"%>
+                </div>
+                <div class="good_contant">
+                    <button class="to_backet_btn">To backet</button>
+                </div>
+            </li>
+            <% end %>
+        </ul>
+    </div>
+</div>
