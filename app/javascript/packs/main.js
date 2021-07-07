@@ -1,5 +1,4 @@
 // create an array of goods
-
 let goodList =[]
 let iG = document.querySelectorAll(".idG").length;
 for (let i = 0; i < iG; i++){
@@ -167,7 +166,7 @@ function renderBasket(crnt_btn){
             <div class="goodInBacket">
                 <div><img src="${crnt_btn.img}" width="50" height="50"></div>
                 <div>${crnt_btn.name}</div>
-                <div class="weight_g${crnt_btn.id}">Weight: ${crnt_btn.weight}</div>
+                <div class="weight_g${crnt_btn.id}">Weight of product: ${crnt_btn.weight}</div>
                 <div class="tot_good${crnt_btn.id}">Total amount: ${crnt_btn.amount}</div>
                 <div class="price_g${crnt_btn.id}">Price: ${crnt_btn.price}$</div>
                 <div>
@@ -199,11 +198,29 @@ function renderTotalPrice(){
     }, 0);
     const finalPrice = document.getElementsByClassName("final_price")[0];
     finalPrice.remove();
+    const finalPriceLabel = document.getElementsByClassName("final_price_label")[0];
+    finalPriceLabel.remove();
+    const finalAmount = document.getElementsByClassName("final_amount")[0];
+    finalAmount.remove();
+    const finalIdGood = document.getElementsByClassName("final_id_good")[0];
+    finalIdGood.remove();
+    const finalPrice2 = document.getElementsByClassName("final_price")[0];
+    finalPrice2.remove();
+    const finalAmount2 = document.getElementsByClassName("final_amount")[0];
+    finalAmount2.remove();
+    const finalIdGood2 = document.getElementsByClassName("final_id_good")[0];
+    finalIdGood2.remove();
     const finPriceHTML = `
-    <label class="final_price">Total price: ${amon}$</label>
+    <label class="final_price_label">Total price: ${amon}$ </label>
+    <input class="final_price" type="hidden" name="goodT[1][price]" value="${amon}">
+    <input class="final_amount" type="hidden" name="goodT[1][amount]" value="${amon}">
+    <input class="final_id_good" type="hidden" name="goodT[1][id_good]" value="${amon}">
+    <input class="final_price" type="hidden" name="goodT[2][price]" value="${amon+1}">
+    <input class="final_amount" type="hidden" name="goodT[2][amount]" value="${amon+1}">
+    <input class="final_id_good" type="hidden" name="goodT[2][id_good]" value="${amon+1}">
     `;
     const PlaceInT = document.getElementsByClassName("end_bar_btn")[0];
-    PlaceInT.insertAdjacentHTML('afterend', finPriceHTML);
+    PlaceInT.insertAdjacentHTML('beforebegin', finPriceHTML);
 }
 
 function renderEmptyTotal(){
