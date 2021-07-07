@@ -1,0 +1,8 @@
+<h2>Orders Page</h2>
+<% @clients_db.map do |i| %>
+<div class="client_content">
+    <p><%="#{i.name}"%></p>
+    <p><%="#{i.phone}"%></p>
+    <p><%="#{i.adress}"%></p>
+</div>
+<% end %>

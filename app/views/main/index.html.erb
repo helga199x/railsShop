@@ -27,16 +27,22 @@
                         </div>
                         <div class="end_bar">
                             <div class="end_container">
-                                <form method="" action="#">
+                                <%=form_tag create_path, method: :post do %>
                                     <label><b>Name</b></label>
-                                    <input type="text" placeholder="Enter Name">
+                                    <input id="name" name="name" type="text" placeholder="Enter Name">
                                     <label><b>Number</b></label>
-                                    <input type="number" placeholder="Enter Number" >
+                                    <input id="number" name="phone"  type="phone" placeholder="Enter Number" >
                                     <label><b>Adress</b></label>
-                                    <input type="text" placeholder="Enter Adress" >
+                                    <input id="adress" name="adress" type="text" placeholder="Enter Adress">
+                                    <label class="final_price_label">Total price: 0 $</label>
+                                    <input class="final_price" type="hidden" name="price" value="0">
+                                    <input class="final_amount" type="hidden" name="amount" value="0">
+                                    <input class="final_id_good" type="hidden" name="id_good" value="0">
+                                    <input class="final_price" type="hidden" name="price" value="0">
+                                    <input class="final_amount" type="hidden" name="amount" value="0">
+                                    <input class="final_id_good" type="hidden" name="id_good" value="0">
                                     <button class="end_bar_btn" type="submit">Order</button>
-                                    <label class="final_price">Total price: 0$</label>
-                                </form>
+                                <% end %>
                             </div>
                         </div>
                     </div>
