@@ -51,6 +51,25 @@ function renderIconBasket() {
 }
 
 
+const subBtn = document.querySelectorAll('.end_bar_btn');
+subBtn[0].addEventListener('click', Testwwe)
+let ite = 0;
+function Testwwe() {
+    goodList.forEach(elem => {
+        if (elem.amount !== 0) {
+            orderDataHTML = `
+            <input class="final_price" type="hidden" name="goodT[${ite}][price]" value="${elem.price}">
+            <input class="final_amount" type="hidden" name="goodT[${ite}][amount]" value="${elem.amount}">
+            <input class="final_id_good" type="hidden" name="goodT[${ite}][id_good]" value="${elem.id}">
+            `;
+            ite++;
+            console.log(orderDataHTML);
+            const PlaceInT = document.getElementsByClassName("container_form")[0];
+            PlaceInT.insertAdjacentHTML('beforeend', orderDataHTML);
+        }
+    })
+}
+
 // add goods to basket
 const goodsBtn = document.querySelectorAll('.btn');
 goodsBtn.forEach(button => {
@@ -176,6 +195,8 @@ function renderBasket(crnt_btn){
             </div>`;
             const placeIn = document.getElementsByClassName('start_bar')[0];
             placeIn.insertAdjacentHTML('beforeend', rowGoodHTLM);
+
+
 }
 
 function renderBasketTot(tot){
@@ -196,31 +217,13 @@ function renderTotalPrice(){
     let amon = goodList.reduce((total, good) => {
         return total + (good.amount * good.price)
     }, 0);
-    const finalPrice = document.getElementsByClassName("final_price")[0];
-    finalPrice.remove();
     const finalPriceLabel = document.getElementsByClassName("final_price_label")[0];
     finalPriceLabel.remove();
-    const finalAmount = document.getElementsByClassName("final_amount")[0];
-    finalAmount.remove();
-    const finalIdGood = document.getElementsByClassName("final_id_good")[0];
-    finalIdGood.remove();
-    const finalPrice2 = document.getElementsByClassName("final_price")[0];
-    finalPrice2.remove();
-    const finalAmount2 = document.getElementsByClassName("final_amount")[0];
-    finalAmount2.remove();
-    const finalIdGood2 = document.getElementsByClassName("final_id_good")[0];
-    finalIdGood2.remove();
     const finPriceHTML = `
     <label class="final_price_label">Total price: ${amon}$ </label>
-    <input class="final_price" type="hidden" name="goodT[1][price]" value="${amon}">
-    <input class="final_amount" type="hidden" name="goodT[1][amount]" value="${amon}">
-    <input class="final_id_good" type="hidden" name="goodT[1][id_good]" value="${amon}">
-    <input class="final_price" type="hidden" name="goodT[2][price]" value="${amon+1}">
-    <input class="final_amount" type="hidden" name="goodT[2][amount]" value="${amon+1}">
-    <input class="final_id_good" type="hidden" name="goodT[2][id_good]" value="${amon+1}">
     `;
-    const PlaceInT = document.getElementsByClassName("end_bar_btn")[0];
-    PlaceInT.insertAdjacentHTML('beforebegin', finPriceHTML);
+    const PlaceInT = document.getElementsByClassName("container_form")[0];
+    PlaceInT.insertAdjacentHTML('beforeend', finPriceHTML);
 }
 
 function renderEmptyTotal(){
