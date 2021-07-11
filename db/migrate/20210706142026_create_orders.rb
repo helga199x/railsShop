@@ -5,6 +5,7 @@ class CreateOrders < ActiveRecord::Migration[6.0]
       t.integer :id_good
       t.integer :amount
       t.float :price
+      t.integer :order_number
       t.timestamps
     end
   end

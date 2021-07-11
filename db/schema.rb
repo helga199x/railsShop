@@ -37,6 +37,7 @@ ActiveRecord::Schema.define(version: 2021_07_06_142220) do
     t.integer "id_good"
     t.integer "amount"
     t.float "price"
+    t.integer "order_number"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
   end

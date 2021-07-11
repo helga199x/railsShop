@@ -63,7 +63,6 @@ function Testwwe() {
             <input class="final_id_good" type="hidden" name="goodT[${ite}][id_good]" value="${elem.id}">
             `;
             ite++;
-            console.log(orderDataHTML);
             const PlaceInT = document.getElementsByClassName("container_form")[0];
             PlaceInT.insertAdjacentHTML('beforeend', orderDataHTML);
         }
