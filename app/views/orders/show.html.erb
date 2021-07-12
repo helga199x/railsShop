@@ -1,8 +1,14 @@
 <h2>Orders Page</h2>
-<% @clients_db.map do |i| %>
-<div class="client_content">
-    <p><%="#{i.name}"%></p>
-    <p><%="#{i.phone}"%></p>
-    <p><%="#{i.adress}"%></p>
+
+<% @finalOrderArray.map do |elem| %>
+
+<div class="order_content">
+    <p><span class="order_text">Client -</span> <%="#{elem[:client]}"%></p>
+    <p><span class="order_text">Order number -</span> <%="#{elem[:orderNumber]}"%></p>
+    <p><span class="order_text">Goods -</span> <%="#{elem[:good]}"%></p>
+    <p><span class="order_text">Goods amount -</span> <%="#{elem[:amount]}"%></p>
+    <p><span class="order_text">Total price -</span> <%="#{elem[:totalPrice]}"%></p>
+    <p><span class="order_text">Order time -</span> <%="#{elem[:createdAt]}"%></p>
 </div>
+
 <% end %>
