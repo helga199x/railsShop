@@ -2,6 +2,9 @@
     border: 2px solid black;
     margin: 20px;
     padding: 5px;
+    display: flex;
+    align-items: flex-start;
+    justify-content: space-between;
 }
 
 p{
@@ -11,4 +14,13 @@ p{
 .order_text{
     font-size: 18px;
     font-weight: 700;
+}
+
+.or_number{
+    font-size: 30px;
+}
+
+.good_column{
+    display: flex;
+    flex-direction: column;
 }

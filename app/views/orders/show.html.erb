@@ -3,11 +3,17 @@
 <% @finalOrderArray.map do |elem| %>
 
 <div class="order_content">
+    <p><span class="order_text or_number">Order number -</span><span class="or_number"> <%="#{elem[:orderNumber]}"%></span></p>
     <p><span class="order_text">Client -</span> <%="#{elem[:client]}"%></p>
-    <p><span class="order_text">Order number -</span> <%="#{elem[:orderNumber]}"%></p>
-    <p><span class="order_text">Goods -</span> <%="#{elem[:good]}"%></p>
+    <div>
+        <p class="good_column"><span class="order_text">Goods</span> 
+        <% elem[:good].each_with_index do |g, index| %>
+        <span><%="good_id#{g} x good_amount#{elem[:amount][index]}"%></span>
+        <% end %>
+        </p>
+    </div>
     <p><span class="order_text">Goods amount -</span> <%="#{elem[:amount]}"%></p>
-    <p><span class="order_text">Total price -</span> <%="#{elem[:totalPrice]}"%></p>
+    <p><span class="order_text">Total price -</span> <%="#{elem[:totalPrice].reduce(:+)}"%></p>
     <p><span class="order_text">Order time -</span> <%="#{elem[:createdAt]}"%></p>
 </div>
 
