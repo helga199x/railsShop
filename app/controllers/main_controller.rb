@@ -32,8 +32,8 @@ class MainController < ApplicationController
             iI += 1
         end
 
-        i = 0;
-        orderNum = 1;
+        i = 0
+        orderNum = 1
         orderT = Order.all
         orderNumLast = 0
         if (orderT[0] != nil)
@@ -57,6 +57,7 @@ class MainController < ApplicationController
             )
             i += 1
         end
+        redirect_to :controller => 'orders', :action => 'show'
     end
 
     def new
