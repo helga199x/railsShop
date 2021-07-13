@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2021_07_06_142220) do
+ActiveRecord::Schema.define(version: 2021_07_13_135013) do
 
   create_table "clients", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci", force: :cascade do |t|
     t.string "name"
@@ -40,6 +40,7 @@ ActiveRecord::Schema.define(version: 2021_07_06_142220) do
     t.integer "order_number"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
+    t.string "status"
   end
 
 end

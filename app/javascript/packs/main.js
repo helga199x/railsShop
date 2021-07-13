@@ -118,7 +118,9 @@ function btnOrdToMinPlus(idBtn){
     const mainPlusMinBtnHTML = `
         <div class="mainPlusMinBtn${goodList[idBtn-1].id}">
                 <button class="btn minus mainP${goodList[idBtn-1].id}" data-a="${orderBtn.id}">-</button>
-                <div class="good_btns mainT${goodList[idBtn-1].id}" data-a="${goodList[idBtn-1].id}">${goodList[idBtn-1].amount}</div>
+                <div class="good_btns mainT${goodList[idBtn-1].id}" data-a="${goodList[idBtn-1].id}">
+                    ${goodList[idBtn-1].amount}
+                </div>
                 <button class="btn plus mainP" data-a="${orderBtn.id}">+</button>
         </div>
     `
@@ -251,7 +253,9 @@ function renderIconBasked(idBtn){
     const orderButton = document.getElementById(idBtn);
     if (orderButton == null){
         mainAmountHTML = `
-        <div class="good_btns mainT${goodList[idBtn-1].id}" data-a="${goodList[idBtn-1].id}">${goodList[idBtn-1].amount}</div>
+        <div class="good_btns mainT${goodList[idBtn-1].id}" data-a="${goodList[idBtn-1].id}">
+            ${goodList[idBtn-1].amount}
+        </div>
         `
         const dsf = "good_btns mainT" + goodList[idBtn-1].id;
         document.getElementsByClassName(dsf)[0].remove();

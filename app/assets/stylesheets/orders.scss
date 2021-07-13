@@ -1,3 +1,7 @@
+h2{
+    margin: 20px;
+}
+
 .order_content{
     border: 2px solid black;
     margin: 20px;
@@ -12,7 +16,19 @@ p{
 }
 
 .order_text{
-    font-size: 18px;
+    font-size: 20px;
+    font-weight: 700;
+}
+
+.btn_contaier{
+    height: 100px;
+    width: 120px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.client_text{
     font-weight: 700;
 }
 
@@ -20,7 +36,20 @@ p{
     font-size: 30px;
 }
 
-.good_column{
+.column{
     display: flex;
     flex-direction: column;
+}
+
+.status_btn{
+    height: 100px;
+    width: 140px;
+    color: black;
+    background-color: red;
+    font-size: 25px;
+    font-weight: 700;
+    text-decoration: none;
+    display: flex;
+    align-items: center;
+    justify-content: center;
 }
