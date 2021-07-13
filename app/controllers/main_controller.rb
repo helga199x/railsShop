@@ -5,6 +5,7 @@ class MainController < ApplicationController
 
     def create     
         clients = Client.all
+        statusIn = "processed"
         iI = 0
         clientID = 0
         clientP = params.permit(:name, :phone, :adress)
@@ -19,6 +20,7 @@ class MainController < ApplicationController
                 break
             elsif (clients[iI].name == clientP[:name] && clients[iI].phone == clientP[:phone] && clients[iI].adress == clientP[:adress])
                 clientID = clients[iI].id
+                statusIn = "prepare"
                 break
             elsif (iI+1 == clients.length)
                 newClient = Client.create(
@@ -53,14 +55,12 @@ class MainController < ApplicationController
                 id_good: goodObj[:id_good].to_i, 
                 amount: goodObj[:amount].to_s, 
                 price: goodObj[:price].to_s, 
-                order_number: orderNum
+                order_number: orderNum,
+                status: statusIn
             )
             i += 1
         end
         redirect_to :controller => 'orders', :action => 'show'
     end
 
-    def new
-
-    end
 end

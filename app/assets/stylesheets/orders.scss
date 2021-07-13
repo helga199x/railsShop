@@ -1,7 +1,14 @@
+h2{
+    margin: 20px;
+}
+
 .order_content{
     border: 2px solid black;
     margin: 20px;
     padding: 5px;
+    display: flex;
+    align-items: flex-start;
+    justify-content: space-between;
 }
 
 p{
@@ -9,6 +16,40 @@ p{
 }
 
 .order_text{
-    font-size: 18px;
+    font-size: 20px;
     font-weight: 700;
+}
+
+.btn_contaier{
+    height: 100px;
+    width: 120px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.client_text{
+    font-weight: 700;
+}
+
+.or_number{
+    font-size: 30px;
+}
+
+.column{
+    display: flex;
+    flex-direction: column;
+}
+
+.status_btn{
+    height: 100px;
+    width: 140px;
+    color: black;
+    background-color: red;
+    font-size: 25px;
+    font-weight: 700;
+    text-decoration: none;
+    display: flex;
+    align-items: center;
+    justify-content: center;
 }

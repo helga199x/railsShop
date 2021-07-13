@@ -3,12 +3,29 @@
 <% @finalOrderArray.map do |elem| %>
 
 <div class="order_content">
-    <p><span class="order_text">Client -</span> <%="#{elem[:client]}"%></p>
-    <p><span class="order_text">Order number -</span> <%="#{elem[:orderNumber]}"%></p>
-    <p><span class="order_text">Goods -</span> <%="#{elem[:good]}"%></p>
-    <p><span class="order_text">Goods amount -</span> <%="#{elem[:amount]}"%></p>
-    <p><span class="order_text">Total price -</span> <%="#{elem[:totalPrice]}"%></p>
+    <p><span class="order_text or_number">Order number -</span><span class="or_number"> <%="#{elem[:orderNumber]}"%></span></p>
+    <p class="column">
+        <span class="order_text">Client -</span> 
+        <span>Name: <%="#{elem[:client][0]}"%></span>
+        <span>Adress: <%="#{elem[:client][1]}"%></span>
+        <span>Phone: <%="#{elem[:client][2]}"%></span>
+    </p>
+    <div>
+        <p class="column"><span class="order_text">Goods -</span> 
+            <% elem[:good].each_with_index do |g, index| %>
+            <span>
+                <span class="client_text"><%="#{g}"%></span> x <%="#{elem[:amount][index]}"%>
+            </span>
+            <% end %>
+        </p>
+    </div>
+    <p><span class="order_text">Total price -</span> <%="#{elem[:totalPrice].reduce(:+)}"%>$</p>
     <p><span class="order_text">Order time -</span> <%="#{elem[:createdAt]}"%></p>
+    <div class="btn_container">
+        <%= link_to "#{elem[:status]}", orders_path(:numberOrder => "#{elem[:orderNumber]}"), method: :updateStatus, class: "status_btn #{elem[:status]}"%>
+    </div>
 </div>
 
 <% end %>
+
+<%= javascript_pack_tag 'orders', 'data-turbolinks-track': 'reload' %>
