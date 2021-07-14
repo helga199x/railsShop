@@ -30,11 +30,16 @@
                                 <%=form_tag create_path, method: :post do %>
                                     <div class="container_form">
                                         <label><b>Name</b></label>
-                                        <input id="name" name="name" type="text" placeholder="Enter Name">
+                                        <input id="name" name="name" type="text" placeholder="Enter Name" required  
+                                        pattern="[A-Z][a-z]{3,10}" 
+                                        title="Exam.: 'Alex', 'Bob', 'Magirada'">
                                         <label><b>Number</b></label>
-                                        <input id="number" name="phone"  type="phone" placeholder="Enter Number" >
+                                        <input id="number" name="phone"  type="text" placeholder="Enter Number" required 
+                                        pattern="\d{7}" 
+                                        title="Exam.: '5550101', '3330202', '67785430'">
                                         <label><b>Adress</b></label>
-                                        <input id="adress" name="adress" type="text" placeholder="Enter Adress">
+                                        <input id="adress" name="adress" type="text" placeholder="Enter Adress" required
+                                        title="Exam.: 'st.Long, h.8, fl.21', 'st.Short, h.44, fl.67', 'Magirada street, house - 10, flat - 5'">
                                         <button class="end_bar_btn" type="submit">Order</button>
                                         <label class="final_price_label">Total price: 0 $</label>
                                     </div>

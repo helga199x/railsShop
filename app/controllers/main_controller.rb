@@ -9,7 +9,7 @@ class MainController < ApplicationController
         iI = 0
         clientID = 0
         clientP = params.permit(:name, :phone, :adress)
-        while iI < clients.length || iI == 0
+        while (iI < clients.length || iI == 0) && (params.permit(goodT:{})[:goodT] != nil)
             if (clients.length == 0)
                 newClient = Client.create(
                     name: clientP[:name].to_s, 
@@ -33,7 +33,7 @@ class MainController < ApplicationController
             end
             iI += 1
         end
-
+        
         i = 0
         orderNum = 1
         orderT = Order.all
@@ -60,7 +60,17 @@ class MainController < ApplicationController
             )
             i += 1
         end
-        redirect_to :controller => 'orders', :action => 'show'
+        redirect_to :controller => 'main', 
+                    :action => 'accepted', 
+                    :client => clientID, 
+                    :order => params.permit(goodT:{})[:goodT].to_h.length
     end
 
+    def accepted
+        if ((params[:client].to_i != 0) && (params[:order].to_i != 0))
+            render :accepted
+        else
+            render :not_accepted
+        end
+    end
 end
