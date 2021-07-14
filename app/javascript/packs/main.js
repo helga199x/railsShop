@@ -52,9 +52,9 @@ function renderIconBasket() {
 
 
 const subBtn = document.querySelectorAll('.end_bar_btn');
-subBtn[0].addEventListener('click', Testwwe)
+subBtn[0].addEventListener('click', OrderFunction)
 let ite = 0;
-function Testwwe() {
+function OrderFunction() {
     goodList.forEach(elem => {
         if (elem.amount !== 0) {
             orderDataHTML = `

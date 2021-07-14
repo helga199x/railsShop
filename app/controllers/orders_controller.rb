@@ -45,7 +45,6 @@ class OrdersController < ApplicationController
                 elem.update(status: "done")
             end
         end
-
         redirect_to :controller => 'orders', :action => 'show'
     end
 
