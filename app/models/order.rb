@@ -1,4 +1,4 @@
 class Order < ApplicationRecord
-    validates :id_good, :amount, :price, :id_client, presence: true
-    validates :id_good, :id_client, :price, :amount, numericality: { greater_than: 0 }
+    validates :good_id, :amount, :price, :client_id, presence: true
+    validates :good_id, :client_id, :price, :amount, numericality: { greater_than: 0 }
 end

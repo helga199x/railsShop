@@ -29,17 +29,12 @@
                             <div class="end_container">
                                 <%=form_tag create_path, method: :post do %>
                                     <div class="container_form">
-                                        <label><b>Name</b></label>
-                                        <input id="name" name="name" type="text" placeholder="Enter Name" required  
-                                        pattern="[A-Z][a-z]{3,10}" 
-                                        title="Exam.: 'Alex', 'Bob', 'Magirada'">
-                                        <label><b>Number</b></label>
-                                        <input id="number" name="phone"  type="text" placeholder="Enter Number" required 
-                                        pattern="\d{7}" 
-                                        title="Exam.: '5550101', '3330202', '67785430'">
+                                        <label><b>Name </b><span class="prompt">(length: 3-9, capital first letter)</span></label>
+                                        <input id="name" name="name" type="text" placeholder="Enter Name" required pattern="[A-Z][a-z]{2,10}">
+                                        <label><b>Number </b><span class="prompt">(length: 7)</span></label>
+                                        <input id="number" name="phone"  type="text" placeholder="Enter Number" required pattern="\d{7}">
                                         <label><b>Adress</b></label>
-                                        <input id="adress" name="adress" type="text" placeholder="Enter Adress" required
-                                        title="Exam.: 'st.Long, h.8, fl.21', 'st.Short, h.44, fl.67', 'Magirada street, house - 10, flat - 5'">
+                                        <input id="adress" name="adress" type="text" placeholder="Enter Adress" required>
                                         <button class="end_bar_btn" type="submit">Order</button>
                                         <label class="final_price_label">Total price: 0 $</label>
                                     </div>
@@ -59,20 +54,29 @@
                     <ul class="goods_ul">
                         <% @good.map do |i| %>
                         <li class="good_container <%="#{i.category}"%>">
-                            <div class="good_contant">
-                                <img class="imgG" src="<%="#{i.img}"%>" width="180" height="180">
+                            <div class="good_top">
+                                <div class="good_contant">
+                                    <img class="imgG g<%="#{i.id}"%>" data-i="<%="#{i.id}"%>" src="<%="#{i.img}"%>" width="180" height="180">
+                                </div>
+                                <div class="good_contant">
+                                    <span class="discriptionG g<%="#{i.id}"%>" data-i="<%="#{i.id}"%>">
+                                        <p class="back_to_img">Show image</p><%="#{i.discription}"%>
+                                    </span>
+                                </div>
                             </div>
-                            <div class="good_contant">
-                                <h3 class="nameG"><%="#{i.name}"%></h3>
-                            </div>
-                            <div class="good_contant">
-                                Price: <span class="priceG"><%="#{i.price}"%></span> $
-                            </div>
-                            <div class="good_contant">
-                                Weight: ~<span class="weightG"><%="#{i.weight}"%></span> kg
-                            </div>
-                            <div class="good_contant">
-                                <button class="btn idG" id="<%="#{i.id}"%>">Order</button>
+                            <div class="good_bottom">
+                                <div class="good_contant">
+                                    <h3 class="nameG"><%="#{i.name}"%></h3>
+                                </div>
+                                <div class="good_contant">
+                                    Price: <span class="priceG"><%="#{i.price}"%></span> $
+                                </div>
+                                <div class="good_contant">
+                                    Weight: ~<span class="weightG"><%="#{i.weight}"%></span>
+                                </div>
+                                <div class="good_contant">
+                                    <button class="btn idG" id="<%="#{i.id}"%>">Order</button>
+                                </div>
                             </div>
                         </li>
                         <% end %>

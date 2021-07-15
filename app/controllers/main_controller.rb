@@ -3,7 +3,8 @@ class MainController < ApplicationController
         @good = Good.all
     end
 
-    def create     
+    def create
+        binding.pry
         clients = Client.all
         statusIn = "processed"
         iI = 0
@@ -51,8 +52,8 @@ class MainController < ApplicationController
                 orderNum = orderNumLast + 1
             end
             Order.create(
-                id_client: clientID.to_i, 
-                id_good: goodObj[:id_good].to_i, 
+                client_id: clientID.to_i, 
+                good_id: goodObj[:good_id].to_i, 
                 amount: goodObj[:amount].to_s, 
                 price: goodObj[:price].to_s, 
                 order_number: orderNum,

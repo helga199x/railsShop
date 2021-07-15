@@ -9,7 +9,7 @@ class OrdersController < ApplicationController
                 next  
             end
             @orderHash = Order.all.where(order_number: iI)
-            @clients_db = Client.all.where(id: @orderHash[0].id_client)
+            @clients_db = Client.all.where(id: @orderHash[0].client_id)
             @finalOrder = {
                 client: [@clients_db[0].name, @clients_db[0].adress, @clients_db[0].phone],
                 orderNumber: @orderHash[0].order_number,
@@ -21,7 +21,7 @@ class OrdersController < ApplicationController
             }
             i = 0
             while i < @orderHash.length
-                @goods_db = Good.all.where(id: @orderHash[i].id_good)
+                @goods_db = Good.all.where(id: @orderHash[i].good_id)
                 @finalOrder[:totalPrice].push(@orderHash[i].amount.to_i * @orderHash[i].price.to_i)
                 @finalOrder[:good].push(@goods_db[0].name)
                 @finalOrder[:amount].push(@orderHash[i].amount)
@@ -47,6 +47,5 @@ class OrdersController < ApplicationController
         end
         redirect_to :controller => 'orders', :action => 'show'
     end
-
 
 end
