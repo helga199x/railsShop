@@ -33,8 +33,8 @@ ActiveRecord::Schema.define(version: 2021_07_13_135013) do
   end
 
   create_table "orders", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci", force: :cascade do |t|
-    t.integer "id_client"
-    t.integer "id_good"
+    t.integer "client_id"
+    t.integer "good_id"
     t.integer "amount"
     t.float "price"
     t.integer "order_number"

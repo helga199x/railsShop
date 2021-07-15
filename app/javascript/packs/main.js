@@ -50,25 +50,6 @@ function renderIconBasket() {
     PlaceInIcon.insertAdjacentHTML('afterbegin', iconBasHTML);
 }
 
-
-const subBtn = document.querySelectorAll('.end_bar_btn');
-subBtn[0].addEventListener('click', OrderFunction)
-let ite = 0;
-function OrderFunction() {
-    goodList.forEach(elem => {
-        if (elem.amount !== 0) {
-            orderDataHTML = `
-            <input class="final_price" type="hidden" name="goodT[${ite}][price]" value="${elem.price}">
-            <input class="final_amount" type="hidden" name="goodT[${ite}][amount]" value="${elem.amount}">
-            <input class="final_id_good" type="hidden" name="goodT[${ite}][id_good]" value="${elem.id}">
-            `;
-            ite++;
-            const PlaceInT = document.getElementsByClassName("container_form")[0];
-            PlaceInT.insertAdjacentHTML('beforeend', orderDataHTML);
-        }
-    })
-}
-
 // add goods to basket
 const goodsBtn = document.querySelectorAll('.btn');
 goodsBtn.forEach(button => {
@@ -187,7 +168,7 @@ function renderBasket(crnt_btn){
                 <div><img src="${crnt_btn.img}" width="50" height="50"></div>
                 <div>${crnt_btn.name}</div>
                 <div class="weight_g${crnt_btn.id}">Weight of product: ${crnt_btn.weight}</div>
-                <div class="tot_good${crnt_btn.id}">Total amount: ${crnt_btn.amount}</div>
+                <div class="tot_good${crnt_btn.id}">Amount: ${crnt_btn.amount}</div>
                 <div class="price_g${crnt_btn.id}">Price: ${crnt_btn.price}$</div>
                 <div>
                     <button class="btn minus" data-a ="${crnt_btn.id}">-</button>
@@ -206,7 +187,7 @@ function renderBasketTot(tot){
     const totPrice = document.getElementsByClassName("price_g"+ tot.id)[0];
     totPrice.remove();
     const totGoodsHTML = `
-    <div class="tot_good${tot.id}">Total amount: ${tot.amount}</div>
+    <div class="tot_good${tot.id}">Amount: ${tot.amount}</div>
     <div class="price_g${tot.id}">Price: ${tot.price*tot.amount}$</div>
     `;
     const PlaceIn = document.getElementsByClassName("weight_g"+ tot.id)[0];
@@ -228,10 +209,10 @@ function renderTotalPrice(){
 }
 
 function renderEmptyTotal(){
-    const finalPrice = document.getElementsByClassName("final_price")[0];
+    const finalPrice = document.getElementsByClassName("final_price_label")[0];
     finalPrice.remove();
     const finPriceHTML = `
-    <label class="final_price">Total price: 0$</label>
+    <label class="final_price_label">Total price: 0$</label>
     `;
     const PlaceInT = document.getElementsByClassName("end_bar_btn")[0];
     PlaceInT.insertAdjacentHTML('afterend', finPriceHTML);
@@ -281,4 +262,60 @@ function showBtnScroll() {
 }
 scrollBtn.onclick = () => {
     window.scrollTo(0,0);
+}
+
+//add discription show onclick 
+
+const image = document.querySelectorAll('.imgG');
+image.forEach(img => {
+    img.addEventListener('click', showDiscription);
+})
+
+const discription = document.querySelectorAll('.discriptionG');
+discription.forEach(disc => {
+    disc.addEventListener('click', showImage);
+})
+
+
+function showDiscription(e){
+    img = e.currentTarget;
+    img.style.display = 'none';
+    document.getElementsByClassName("discriptionG g"+img.dataset['i'])[0].style.display = 'flex'
+}
+
+function showImage(e){
+    disc = e.currentTarget;
+    disc.style.display = 'none'
+    document.getElementsByClassName("imgG g"+disc.dataset['i'])[0].style.display = 'flex'
+}
+
+// add goods to sending params
+
+const nameClient = document.getElementById('name');
+const phoneClient = document.getElementById('number');
+const adressClient = document.getElementById('adress');
+const subBtn = document.querySelectorAll('.end_bar_btn');
+let ite = 0;
+function OrderFunction() {
+    goodList.forEach(elem => {
+        if (elem.amount !== 0) {
+            orderDataHTML = `
+            <input class="final_price" type="hidden" name="goodT[${ite}][price]" value="${elem.price}">
+            <input class="final_amount" type="hidden" name="goodT[${ite}][amount]" value="${elem.amount}">
+            <input class="final_good_id" type="hidden" name="goodT[${ite}][good_id]" value="${elem.id}">
+            `;
+            ite++;
+            const PlaceInT = document.getElementsByClassName("container_form")[0];
+            PlaceInT.insertAdjacentHTML('beforeend', orderDataHTML);
+        }
+    })
+}
+
+
+subBtn[0].addEventListener('click', orderF)
+function orderF() {
+    if (nameClient.validity.valid && phoneClient.validity.valid && adressClient.validity.valid) {
+        OrderFunction();
+        console.log('valid1');
+    }
 }
