@@ -1,7 +1,7 @@
+<%= stylesheet_link_tag 'orders', media: 'all', 'data-turbolinks-track': 'reload' %>
+
 <h2>Orders Page</h2>
-
 <% @finalOrderArray.map do |elem| %>
-
 <div class="order_content">
     <p><span class="order_text or_number">Order number -</span><span class="or_number"> <%="#{elem[:orderNumber]}"%></span></p>
     <p class="column">
@@ -25,7 +25,6 @@
         <%= link_to "#{elem[:status]}", orders_path(:numberOrder => "#{elem[:orderNumber]}"), method: :updateStatus, class: "status_btn #{elem[:status]}"%>
     </div>
 </div>
-
 <% end %>
 
 <%= javascript_pack_tag 'orders', 'data-turbolinks-track': 'reload' %>
