@@ -1,5 +1,15 @@
-<div class="page-container">
-    <div class="nav_bar">
+<%= stylesheet_link_tag 'admins', media: 'all', 'data-turbolinks-track': 'reload' %>
 
+<div class="page">
+    <div class="page_container">
+        <div class="nav_bar">
+            <%= link_to "Admin page", admin_path, class: "nav_link"%>
+            <%= link_to "Goods", admin_goods_path, class: "nav_link"%>
+            <%= link_to "Orders", admin_orders_path, class: "nav_link"%>
+        </div>
+        <div class="contant">
+            <p>MAIN ADMIN PAGE.</p>
+            <p>Late I have to put some information here.</p>
+        </div>
     </div>
 </div>

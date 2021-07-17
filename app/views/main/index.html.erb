@@ -1,4 +1,5 @@
 <%= stylesheet_link_tag 'main', media: 'all', 'data-turbolinks-track': 'reload' %>
+
 <header class="header">
             <div class="h_container">
                 <div class="h_logo">Vinlass</div>
@@ -52,14 +53,15 @@
                     <button data-f="cake" class="btn_goods_nav">Cakes</button>
                 </div>
                     <ul class="goods_ul">
+                    <% b = 0 %>
                         <% @good.map do |i| %>
                         <li class="good_container <%="#{i.category}"%>">
                             <div class="good_top">
                                 <div class="good_contant">
-                                    <img class="imgG g<%="#{i.id}"%>" data-i="<%="#{i.id}"%>" src="<%="#{i.img}"%>" width="180" height="180">
+                                    <img class="imgG g<%="#{b+1}"%>" data-i="<%="#{b+1}"%>" src="<%="#{i.img}"%>" width="180" height="180">
                                 </div>
                                 <div class="good_contant">
-                                    <span class="discriptionG g<%="#{i.id}"%>" data-i="<%="#{i.id}"%>">
+                                    <span class="discriptionG g<%="#{b+1}"%>" data-i="<%="#{b+1}"%>">
                                         <p class="back_to_img">Show image</p><%="#{i.discription}"%>
                                     </span>
                                 </div>
@@ -75,10 +77,12 @@
                                     Weight: ~<span class="weightG"><%="#{i.weight}"%></span>
                                 </div>
                                 <div class="good_contant">
-                                    <button class="btn idG" id="<%="#{i.id}"%>">Order</button>
+                                    <button class="btn idG" id="<%="#{b+1}"%>">Order</button>
+                                    <div class="dbId" style="display: none;"><%="#{i.id}"%></div>
                                 </div>
                             </div>
                         </li>
+                        <% b += 1 %>
                         <% end %>
                     </ul>
                 </div>
