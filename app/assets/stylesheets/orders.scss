@@ -28,6 +28,19 @@ p{
     justify-content: center;
 }
 
+.status_btn{
+    background-color: red;
+    height: 100%;
+    width: 100%;
+    font-size: 20px;
+    font-weight: 700;
+    text-decoration: none;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color: black;
+}
+
 .client_text{
     font-weight: 700;
 }
@@ -39,17 +52,4 @@ p{
 .column{
     display: flex;
     flex-direction: column;
-}
-
-.status_btn{
-    height: 100px;
-    width: 140px;
-    color: black;
-    background-color: red;
-    font-size: 25px;
-    font-weight: 700;
-    text-decoration: none;
-    display: flex;
-    align-items: center;
-    justify-content: center;
 }

@@ -1,0 +1,49 @@
+<%= stylesheet_link_tag 'admins', media: 'all', 'data-turbolinks-track': 'reload' %>
+
+<div class="page">
+    <div class="page_container">
+        <div class="nav_bar">
+            <%= link_to "Admin page", admin_path, class: "nav_link"%>
+            <%= link_to "Goods", admin_goods_path, class: "nav_link"%>
+            <%= link_to "Orders", admin_orders_path, class: "nav_link"%>
+        </div>
+        <div class="contant">
+            <li class="good_container">
+                <div class="good_top">
+                    <button class="btn">Create new</button>
+                </div>
+            </li>
+            <% @good.map do |i| %>
+                    <li class="good_container <%="#{i.category}"%>">
+                        <div class="good_top">
+                            <div class="good_contant">
+                                <img class="imgG g<%="#{i.id}"%>" data-i="<%="#{i.id}"%>" src="/<%="#{i.img}"%>" width="180" height="180">
+                            </div>
+                            <div class="good_contant">
+                                <span class="discriptionG g<%="#{i.id}"%>" data-i="<%="#{i.id}"%>">
+                                    <%="#{i.discription}"%>
+                                </span>
+                            </div>
+                        </div>
+                        <div class="good_bottom">
+                            <div class="good_contant">
+                                <h3 class="nameG"><%="#{i.name}"%></h3>
+                            </div>
+                            <div class="good_contant">
+                                Price: <span class="priceG"><%="#{i.price}"%></span> $
+                            </div>
+                            <div class="good_contant">
+                                Weight: ~<span class="weightG"><%="#{i.weight}"%></span>
+                            </div>
+                            <div class="good_contant">
+                                <%= link_to "Delete", admin_destroy_path(:id => i.id), class: "btn"%>
+                                <button class="btn idG">Edit</button>
+                            </div>
+                        </div>
+                    </li>
+            <% end %>
+        </div>
+    </div>
+</div>
+
+<%= javascript_pack_tag 'goods', 'data-turbolinks-track': 'reload' %>

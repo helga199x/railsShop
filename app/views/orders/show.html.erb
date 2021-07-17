@@ -21,7 +21,7 @@
     </div>
     <p><span class="order_text">Total price -</span> <%="#{elem[:totalPrice].reduce(:+)}"%>$</p>
     <p><span class="order_text">Order time -</span> <%="#{elem[:createdAt]}"%></p>
-    <div class="btn_container">
+    <div class="btn_contaier">
         <%= link_to "#{elem[:status]}", orders_path(:numberOrder => "#{elem[:orderNumber]}"), method: :updateStatus, class: "status_btn #{elem[:status]}"%>
     </div>
 </div>

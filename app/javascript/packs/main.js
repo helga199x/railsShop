@@ -7,7 +7,8 @@ for (let i = 0; i < iG; i++){
     const priceG = document.querySelectorAll(".priceG")[i].textContent;
     const weightG = document.querySelectorAll(".weightG")[i].textContent;
     const idG = document.querySelectorAll(".idG")[i].id;
-    goodList.push({id: idG, name: nameG, price: priceG, weight: weightG, img: imgG, amount: 0})
+    const dbId = document.querySelectorAll(".dbId")[i].textContent;
+    goodList.push({id: idG, dbId: dbId, name: nameG, price: priceG, weight: weightG, img: imgG, amount: 0})
 }
 
 // filter
@@ -302,7 +303,7 @@ function OrderFunction() {
             orderDataHTML = `
             <input class="final_price" type="hidden" name="goodT[${ite}][price]" value="${elem.price}">
             <input class="final_amount" type="hidden" name="goodT[${ite}][amount]" value="${elem.amount}">
-            <input class="final_good_id" type="hidden" name="goodT[${ite}][good_id]" value="${elem.id}">
+            <input class="final_good_id" type="hidden" name="goodT[${ite}][good_id]" value="${elem.dbId}">
             `;
             ite++;
             const PlaceInT = document.getElementsByClassName("container_form")[0];

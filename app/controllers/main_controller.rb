@@ -4,7 +4,6 @@ class MainController < ApplicationController
     end
 
     def create
-        binding.pry
         clients = Client.all
         statusIn = "processed"
         iI = 0
