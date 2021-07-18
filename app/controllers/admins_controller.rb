@@ -7,10 +7,6 @@ class AdminsController < ApplicationController
         @finalOrderArray = []
         iI = 1
         while ((@orderHash = Order.all.where(order_number: iI)[0]) != nil)
-            if (@orderHash.status == "done")
-                iI += 1
-                next  
-            end
             @orderHash = Order.all.where(order_number: iI)
             @clients_db = Client.all.where(id: @orderHash[0].client_id)
             @finalOrder = {
@@ -41,11 +37,24 @@ class AdminsController < ApplicationController
     end
 
     def create
-
+        binding.pry
+        Good.create(good_params)
+        redirect_to "/admin/goods"
     end
 
     def destroy
         Good.where(id: params[:id]).first.destroy
         redirect_to "/admin/goods"
     end
+
+    def update
+        Good.where(id: params[:id])
+        .update(good_params)
+        redirect_to "/admin/goods"
+    end
+
+    def good_params
+        params.permit(:name, :price, :weight, :discription, :insale, :category, :img)
+    end
+
 end

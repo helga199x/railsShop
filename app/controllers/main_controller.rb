@@ -1,6 +1,6 @@
 class MainController < ApplicationController
     def index
-        @good = Good.all
+        @good = Good.all.where(insale: true)
     end
 
     def create
