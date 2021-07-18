@@ -317,6 +317,5 @@ subBtn[0].addEventListener('click', orderF)
 function orderF() {
     if (nameClient.validity.valid && phoneClient.validity.valid && adressClient.validity.valid) {
         OrderFunction();
-        console.log('valid1');
     }
 }
