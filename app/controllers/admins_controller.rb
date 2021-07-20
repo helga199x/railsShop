@@ -37,7 +37,6 @@ class AdminsController < ApplicationController
     end
 
     def create
-        binding.pry
         Good.create(good_params)
         redirect_to "/admin/goods"
     end
@@ -54,7 +53,7 @@ class AdminsController < ApplicationController
     end
 
     def good_params
-        params.permit(:name, :price, :weight, :discription, :insale, :category, :img)
+        params.permit(:name, :price, :weight, :discription, :insale, :category, :storage_image)
     end
 
 end

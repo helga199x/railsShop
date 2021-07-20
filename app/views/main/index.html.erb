@@ -58,7 +58,7 @@
                         <li class="good_container <%="#{i.category}"%>">
                             <div class="good_top">
                                 <div class="good_contant">
-                                    <img class="imgG g<%="#{b+1}"%>" data-i="<%="#{b+1}"%>" src="<%="#{i.img}"%>" width="180" height="180">
+                                    <%= image_tag(i.storage_image, size: "200", class: "imgG g"+"#{b+1}", data: { i: "#{b+1}"}) if i.storage_image.attached?%>
                                 </div>
                                 <div class="good_contant">
                                     <span class="discriptionG g<%="#{b+1}"%>" data-i="<%="#{b+1}"%>">

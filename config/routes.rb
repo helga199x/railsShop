@@ -6,7 +6,7 @@ Rails.application.routes.draw do
   get 'admin/goods' => 'admins#goods'
   get 'admin/destroy' => 'admins#destroy'
   get 'admin/goods/update' => 'admins#update'
-  get 'admin/goods/create' => 'admins#create'
+  post 'admin/goods/create' => 'admins#create'
   resources :admins
 
   get 'main' => 'main#accepted'
