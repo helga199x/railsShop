@@ -15,9 +15,10 @@
                     </div>
                 </li>
                 <div class="container_form0 good_container" style="display:none">
-                    <form action="/admin/goods/create" method='get'>
-                        <label><b>Image</b></label>
-                        <input id="img" name="img" type="file">
+                    <%= form_with url: "/admin/goods/create", method: :post do |f| %>
+                    <form action="/admin/goods/create" method='post'>
+                        <%= f.label :storage_image %>
+                        <%= f.file_field :storage_image %>
                         <label><b>Name</b></label>
                         <input id="name" name="name" type="text" required>
                         <label><b>Price</b></label>
@@ -36,12 +37,16 @@
                         </select>
                         <label for="insale"><b>Status</b></label>
                         <select id="insale" name="insale">
+                            <option selected disabled hidden value="true">
+                                In sale
+                            </option>
                             <option value="true">In sale</option>
                             <option value="false">Not sale</option>
                         </select>
                         </p><button class="end_bar_btn" type="submit">Create</button>
                     </form>
                     </p><button class="back_btn" data-i="0">X</button>
+                    <% end %>
                 </div>
             </div>
             <% @good.map do |i| %>
@@ -83,7 +88,7 @@
                     <li class="good_container <%="#{i.category}"%> good<%="#{i.id}"%>">
                         <div class="good_top">
                             <div class="good_contant">
-                                <img class="imgG g<%="#{i.id}"%>" data-i="<%="#{i.id}"%>" src="/<%="#{i.img}"%>" width="180" height="180">
+                                <%= image_tag(i.storage_image, size: "200", class: "imgG g"+"#{i.id}", data: { i: "#{i.id}"}) if i.storage_image.attached?%>
                             </div>
                             <div class="good_contant">
                                 <span class="discriptionG g<%="#{i.id}"%>" data-i="<%="#{i.id}"%>">
