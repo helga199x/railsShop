@@ -6,6 +6,7 @@
             <%= link_to "Admin page", admin_path, class: "nav_link"%>
             <%= link_to "Goods", admin_goods_path, class: "nav_link"%>
             <%= link_to "Orders", admin_orders_path, class: "nav_link"%>
+            <%= link_to "Clients", admin_clients_path, class: "nav_link"%>
         </div>
         <div class="contant">
             <div class="good_cont_div">
@@ -16,7 +17,6 @@
                 </li>
                 <div class="container_form0 good_container" style="display:none">
                     <%= form_with url: "/admin/goods/create", method: :post do |f| %>
-                    <form action="/admin/goods/create" method='post'>
                         <%= f.label :storage_image %>
                         <%= f.file_field :storage_image %>
                         <label><b>Name</b></label>
@@ -43,9 +43,9 @@
                             <option value="true">In sale</option>
                             <option value="false">Not sale</option>
                         </select>
-                        </p><button class="end_bar_btn" type="submit">Create</button>
+                        </p><button class="end_bar_btn btn" type="submit">Create</button>
                     </form>
-                    </p><button class="back_btn" data-i="0">X</button>
+                    </p><button class="back_btn btn" data-i="0">X</button>
                     <% end %>
                 </div>
             </div>
@@ -60,10 +60,10 @@
                         <label><b>Weight</b></label>
                         <input id="weight" name="weight" type="text" value=<%="#{i.weight}"%> required>
                         <label><b>Discription</b></label>
-                        <input id="discription" name="discription" type="text" value="<%="#{i.discription}"%>" required>
+                        <textarea id="discription" name="discription" required><%="#{i.discription}"%></textarea>
                         <label for="category"><b>Category</b></label>
                         <select id="category" name="category">
-                        <option selected disabled hidden value="<%="#{i.category}"%>">
+                        <option selected hidden value="<%="#{i.category}"%>">
                             <%="#{i.category}"%>
                         </option>
                         <option value="drink">drink</option>
@@ -81,9 +81,9 @@
                         <option value="false">Not sale</option>
                         </select>
                         <input id="id" name="id" type="hidden" value=<%="#{i.id}"%> required>
-                        </p><button class="end_bar_btn" type="submit">Update</button>
+                        </p><button class="end_bar_btn btn" type="submit">Update</button>
                     </form>
-                    </p><button class="back_btn" data-i="<%="#{i.id}"%>">X</button>
+                    </p><button class="back_btn btn" data-i="<%="#{i.id}"%>">X</button>
                 </div>
                     <li class="good_container <%="#{i.category}"%> good<%="#{i.id}"%>">
                         <div class="good_top">
@@ -92,17 +92,17 @@
                             </div>
                             <div class="good_contant">
                                 <span class="discriptionG g<%="#{i.id}"%>" data-i="<%="#{i.id}"%>">
-                                    Discription: <%="#{i.discription}"%>
+                                    <b>Discription:</b> <%="#{i.discription}"%>
                                 </span>
                             </div>
                             <div class="good_contant">
                                 <span>
-                                    Category: <%="#{i.category}"%>
+                                    <b>Category:</b> <%="#{i.category}"%>
                                 </span>
                             </div>
                             <div class="good_contant">
                                 <span>
-                                    Status for sale: <%="#{i.insale}"%>
+                                    <b>Status for sale:</b> <%="#{i.insale}"%>
                                 </span>
                             </div>
                         </div>

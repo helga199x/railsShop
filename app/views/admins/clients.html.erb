@@ -1,0 +1,30 @@
+<%= stylesheet_link_tag 'admins', media: 'all', 'data-turbolinks-track': 'reload' %>
+
+<div class="page">
+    <div class="page_container">
+        <div class="nav_bar">
+            <%= link_to "Admin page", admin_path, class: "nav_link"%>
+            <%= link_to "Goods", admin_goods_path, class: "nav_link"%>
+            <%= link_to "Orders", admin_orders_path, class: "nav_link"%>
+            <%= link_to "Clients", admin_clients_path, class: "nav_link"%>
+        </div>
+        <div class="contant">
+            <% @client.map do |i| %>
+            <div class="client_container">
+                <ul class="client_ul">
+                    <b>Client data</b>
+                    <li class="client_li"><b>Id:</b> <%="#{i.id}"%></li>
+                    <li class="client_li"class="client_li"><b>Name:</b> <%="#{i.name}"%></li>
+                    <li class="client_li"><b>Adress:</b> <%="#{i.adress}"%></li>
+                    <li class="client_li"><b>Phone:</b> <%="#{i.phone}"%></li>
+                    <li class="client_li"><b>Added:</b> <%="#{i.created_at}"%></li>
+                    <form action="clients/destroyClient">
+                        <input id="id" name="id" type="hidden" value=<%="#{i.id}"%>>
+                        <button class="btn">Delete</button>
+                    </form>
+                </ul>
+            </div>
+            <% end %>
+        </div>
+    </div>
+</div>

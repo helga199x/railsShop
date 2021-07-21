@@ -4,6 +4,8 @@ Rails.application.routes.draw do
   get 'admin' => 'admins#admin'
   get 'admin/orders' => 'admins#orders'
   get 'admin/goods' => 'admins#goods'
+  get 'admin/clients' => 'admins#clients'
+  get 'admin/clients/destroyClient' => 'admins#destroyClient'
   get 'admin/destroy' => 'admins#destroy'
   get 'admin/goods/update' => 'admins#update'
   post 'admin/goods/create' => 'admins#create'
