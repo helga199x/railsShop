@@ -50,7 +50,7 @@ class AdminsController < ApplicationController
     end
 
     def goods
-        @good = Good.all
+        @good = Good.all.order('created_at DESC')
     end
 
     def create

@@ -1,6 +1,6 @@
 class MainController < ApplicationController
     def index
-        @good = Good.all.where(insale: true)
+        @good = Good.all.where(insale: true).order(:category)
     end
 
     def create

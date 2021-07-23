@@ -9,6 +9,7 @@
             <%= link_to "Clients", admin_clients_path, class: "nav_link"%>
         </div>
         <div class="contant">
+            <% totalMoney = 0 %>
             <% @finalOrderArray.map do |elem| %>
                 <div class="order_content">
                     <p><span class="order_text or_number">Order number -</span><span class="or_number"> <%="#{elem[:orderNumber]}"%></span></p>
@@ -36,7 +37,9 @@
                         <p>Status: <%="#{elem[:status]}"%></p>
                     </div>
                 </div>
+            <% totalMoney += elem[:totalPrice].reduce(:+).to_i %>
             <% end %>
+            <div class="money">Money: <%="#{totalMoney}"%>$<div>
         </div>
     </div>
 </div>
