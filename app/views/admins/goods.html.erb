@@ -26,7 +26,7 @@
                         <label><b>Weight</b></label>
                         <input id="weight" name="weight" type="text" required>
                         <label><b>Discription</b></label>
-                        <input id="discription" name="discription" type="text" required>
+                        <textarea id="discription" name="discription" required></textarea>
                         <label for="category"><b>Category</b></label>
                         <select id="category" name="category">
                             <option value="drink">drink</option>
@@ -37,7 +37,7 @@
                         </select>
                         <label for="insale"><b>Status</b></label>
                         <select id="insale" name="insale">
-                            <option selected disabled hidden value="true">
+                            <option selected hidden value="true">
                                 In sale
                             </option>
                             <option value="true">In sale</option>
@@ -74,7 +74,7 @@
                         </select>
                         <label for="insale"><b>Status</b></label>
                         <select id="insale" name="insale">
-                        <option selected disabled hidden value="<%="#{i.insale}"%>">
+                        <option selected hidden value="<%="#{i.insale}"%>">
                             <%="#{i.insale}"%>
                         </option>
                         <option value="true">In sale</option>
