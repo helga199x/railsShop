@@ -2,25 +2,20 @@
 
 <div class="page">
     <div class="page_container">
-        <div class="nav_bar">
-            <%= link_to "Admin page", admin_path, class: "nav_link"%>
-            <%= link_to "Goods", admin_goods_path, class: "nav_link"%>
-            <%= link_to "Orders", admin_orders_path, class: "nav_link"%>
-            <%= link_to "Clients", admin_clients_path, class: "nav_link"%>
-        </div>
+        <%=render partial: 'shared/admin_nav' %>
         <div class="contant">
             <% totalMoney = 0 %>
             <% @finalOrderArray.map do |elem| %>
                 <div class="order_content">
                     <p><span class="order_text or_number">Order number -</span><span class="or_number"> <%="#{elem[:orderNumber]}"%></span></p>
                     <p class="column">
-                        <span class="order_text">Client -</span> 
+                        <span class="order_text">Client -</span>
                         <span>Name: <%="#{elem[:client][0]}"%></span>
-                        <span>Adress: <%="#{elem[:client][1]}"%></span>
+                        <span>Address: <%="#{elem[:client][1]}"%></span>
                         <span>Phone: <%="#{elem[:client][2]}"%></span>
                     </p>
                     <div>
-                        <p class="column"><span class="order_text">Goods -</span> 
+                        <p class="column"><span class="order_text">Goods -</span>
                             <% elem[:good].each_with_index do |g, index| %>
                             <span>
                                 <span class="client_text"><%="#{g}"%></span> x <%="#{elem[:amount][index]}"%>
@@ -39,7 +34,9 @@
                 </div>
             <% totalMoney += elem[:totalPrice].reduce(:+).to_i %>
             <% end %>
-            <div class="money">Money: <%="#{totalMoney}"%>$<div>
+            <div class="money">
+              Money: <%="#{totalMoney}"%>$
+            </div>
         </div>
     </div>
 </div>

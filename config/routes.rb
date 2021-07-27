@@ -1,5 +1,6 @@
 Rails.application.routes.draw do
 
+  devise_for :users
   root 'main#index'
   get 'admin' => 'admins#admin'
   get 'admin/orders' => 'admins#orders'
