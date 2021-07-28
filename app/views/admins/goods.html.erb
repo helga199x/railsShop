@@ -1,5 +1,5 @@
 <%= stylesheet_link_tag 'admins', media: 'all', 'data-turbolinks-track': 'reload' %>
-
+<%= render 'include/auth/auth_div' %>
 <div class="page">
     <div class="page_container">
         <%=render partial: 'shared/admin_nav' %>
@@ -83,7 +83,11 @@
                     <li class="good_container <%="#{i.category}"%> good<%="#{i.id}"%>">
                         <div class="good_top">
                             <div class="good_contant">
+                              <% if i.img != nil %>
+                                <%= image_tag(i.img, size: "200", class: "imgG g"+"#{i.id}", data: { i: "#{i.id}"}) %>
+                              <% else %>
                                 <%= image_tag(i.storage_image, size: "200", class: "imgG g"+"#{i.id}", data: { i: "#{i.id}"}) if i.storage_image.attached?%>
+                              <% end %>
                             </div>
                             <div class="good_contant">
                                 <span class="discriptionG g<%="#{i.id}"%>" data-i="<%="#{i.id}"%>">

@@ -171,12 +171,16 @@ form{
 .client_container{
     border: 2px solid black;
     margin: 20px;
+    width: 100%;
 }
 
 .client_ul{
     list-style-type: none;
     padding: 10px;
     margin: 10px;
+    display: flex;
+    align-items: center;
+    justify-content: space-around;
 }
 
 .client_li{

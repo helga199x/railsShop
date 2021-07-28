@@ -1,8 +1,14 @@
-<% if user_signed_in? %>
-  <a href='#' class="btn">Welcome, <%=current_user.email %></a>
-  <%= link_to 'Exit', destroy_user_session_path, method: :delete, class: 'btn' %>
-  <%= link_to 'Edit', edit_user_registation_path, class: 'btn' %>
-<% else %>
-  <%= link_to 'Enter', new_user_session_path, class: 'btn' %>
-  <%= link_to 'Registration', new_user_registration_path, class: 'btn' %>
-<% end %>
+<div style="margin: 10px">
+  <% if user_signed_in? %>
+    <%= link_to 'INDEX PAGE', root_path, class: 'btn', style: 'text-decoration: none' %>
+    <%= link_to 'COOK PAGE', orders_path, class: 'btn', style: 'text-decoration: none'%>
+    <%= link_to 'Exit', destroy_user_session_path, method: :delete, class: 'btn', style: 'text-decoration: none' %>
+    <%= link_to 'Edit', edit_user_registration_path, class: 'btn', style: 'text-decoration: none' %>
+    <% if current_user.try(:admin) %>
+      <%= link_to 'ADMIN PAGE', admin_path, class: 'btn', style: 'text-decoration: none' %>
+    <% end %>
+  <% else %>
+    <%= link_to 'Enter', new_user_session_path, class: 'btn', style: 'text-decoration: none' %>
+    <%= link_to 'Registration', new_user_registration_path, class: 'btn', style: 'text-decoration: none' %>
+  <% end %>
+</div>

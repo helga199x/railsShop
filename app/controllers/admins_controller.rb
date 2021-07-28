@@ -1,8 +1,10 @@
 class AdminsController < ApplicationController
-  before_action :admin?
-  def admin; end
 
-  def admin?; end
+  before_action :admin
+
+  def admin
+    render 'main/not_accepted' unless (user_signed_in? && current_user.try(:admin?))
+  end
 
   def orders
     if Order.maximum('order_number').nil?
@@ -65,8 +67,7 @@ class AdminsController < ApplicationController
   end
 
   def update
-    Good.where(id: params[:id])
-    .update(good_params)
+    Good.where(id: params[:id]).update(good_params)
     redirect_to '/admin/goods'
   end
 

@@ -1,6 +1,6 @@
 <%= stylesheet_link_tag 'orders', media: 'all', 'data-turbolinks-track': 'reload' %>
 
-<h2>Orders Page</h2>
+<h2>Cook Page</h2>
 <% @finalOrderArray.map do |elem| %>
 <div class="order_content">
     <p><span class="order_text or_number">Order number -</span><span class="or_number"> <%="#{elem[:orderNumber]}"%></span></p>
