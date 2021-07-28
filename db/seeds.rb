@@ -7,6 +7,8 @@
 #   Character.create(name: 'Luke', movie: movies.first)
 
 Good.delete_all
+Order.delete_all
+
 Good.create(name: 'County pizza',
             price: 8,
             weight: 0.7,

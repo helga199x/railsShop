@@ -70,7 +70,11 @@
                         <label for="insale"><b>Status</b></label>
                         <select id="insale" name="insale">
                         <option selected hidden value="<%="#{i.insale}"%>">
-                            <%="#{i.insale}"%>
+                          <% if i.insale == true %>
+                          In sale
+                          <% else %>
+                          Not sale
+                          <% end %>
                         </option>
                         <option value="true">In sale</option>
                         <option value="false">Not sale</option>
