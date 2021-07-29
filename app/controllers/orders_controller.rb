@@ -47,18 +47,22 @@ class OrdersController < ApplicationController
 
   def updateStatus
     orderNumber = params.permit(:numberOrder)[:numberOrder].to_i
-    if Order.all.where(order_number: orderNumber)[0].status == 'processed'
-      ord = Order.all.where(order_number: orderNumber)
-      ord.each do |elem|
-        elem.update(status: 'prepare')
-      end
-    elsif Order.all.where(order_number: orderNumber)[0].status == 'prepare'
-      ord = Order.all.where(order_number: orderNumber)
-      ord.each do |elem|
-        elem.update(status: 'done')
-      end
+    case Order.all.where(order_number: orderNumber)[0].status
+    when 'processed'
+      update_new('prepare', orderNumber)
+    when 'prepare'
+      update_new('done', orderNumber)
+    else
+      render status: 409
     end
     redirect_to controller: 'orders', action: 'show'
+  end
+
+  def update_new(status_new, orderNumber)
+    ord = Order.all.where(order_number: orderNumber)
+    ord.each do |elem|
+      elem.update(status: status_new)
+    end
   end
 
 end
