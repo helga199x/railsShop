@@ -1,96 +1,92 @@
 <%= stylesheet_link_tag 'main', media: 'all', 'data-turbolinks-track': 'reload' %>
 <%= render 'include/auth/auth_div' %>
 <header class="header">
-            <div class="h_container">
-                <div class="h_logo">Vinlass</div>
-                <div class="info_bar">
-                    <a class="info_bar_link" href="">Main page</a>
-                    <a class="info_bar_link" href="">Our work time</a>
-                    <a class="info_bar_link" href="">Menu</a>
-                    <a class="info_bar_link" href="">Conctacts</a>
-                </div>
-            </div>
-        </header>
-        <div class="content_container">
-            <div class="content_page">
-
-                <div class="scrollBtn">up</div>
-                <div class="basket_container">
-                    <div class="basket_amount">0</div>
-                    <button class="basket_icon">
-                        <%=image_tag("basket.png", width: "40", height: "40", alt: "Basket")%> 
-                    </button>
-                </div>
-                <div class="basket">
-                    <div class="basket_content">
-                        <div class="start_bar">
-
-                        </div>
-                        <div class="end_bar">
-                            <div class="end_container">
-                                <%=form_tag create_path, method: :post do %>
-                                    <div class="container_form">
-                                        <label><b>Name </b><span class="prompt">(length: 3-9, capital first letter)</span></label>
-                                        <input id="name" name="name" type="text" placeholder="Enter Name" required pattern="[A-Z][a-z]{2,10}">
-                                        <label><b>Number </b><span class="prompt">(length: 7)</span></label>
-                                        <input id="number" name="phone"  type="text" placeholder="Enter Number" required pattern="\d{7}">
-                                        <label><b>Adress</b></label>
-                                        <input id="adress" name="adress" type="text" placeholder="Enter Adress" required>
-                                        <button class="end_bar_btn" type="submit">Order</button>
-                                        <label class="final_price_label">Total price: 0 $</label>
-                                    </div>
-                                <% end %>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <div class="goods_nav">
-                    <button data-f="all" class="btn_goods_nav">All</button>
-                    <button data-f="pizza" class="btn_goods_nav">Pizza</button>
-                    <button data-f="burger" class="btn_goods_nav">Burgers</button>
-                    <button data-f="drink" class="btn_goods_nav">Drinks</button>
-                    <button data-f="sushi" class="btn_goods_nav">Sushi</button>
-                    <button data-f="cake" class="btn_goods_nav">Cakes</button>
-                </div>
-                    <ul class="goods_ul">
-                    <% b = 0 %>
-                        <% @good.map do |i| %>
-                        <li class="good_container <%="#{i.category}"%>">
-                            <div class="good_top">
-                                <div class="good_contant">
-                                  <% if i.img != nil %>
-                                    <%= image_tag(i.img, size: "200", class: "imgG g"+"#{b+1}", data: { i: "#{b+1}"}) %>
-                                  <% else %>
-                                    <%= image_tag(i.storage_image, size: "200", class: "imgG g"+"#{b+1}", data: { i: "#{b+1}"}) if i.storage_image.attached?%>
-                                  <% end %>
-                                </div>
-                                <div class="good_contant">
-                                    <span class="discriptionG g<%="#{b+1}"%>" data-i="<%="#{b+1}"%>">
-                                        <p class="back_to_img">Show image</p><%="#{i.discription}"%>
-                                    </span>
-                                </div>
-                            </div>
-                            <div class="good_bottom">
-                                <div class="good_contant">
-                                    <h3 class="nameG"><%="#{i.name}"%></h3>
-                                </div>
-                                <div class="good_contant">
-                                    Price: <span class="priceG"><%="#{i.price}"%></span> $
-                                </div>
-                                <div class="good_contant">
-                                    Weight: ~<span class="weightG"><%="#{i.weight}"%></span>
-                                </div>
-                                <div class="good_contant">
-                                    <button class="btn idG" id="<%="#{b+1}"%>">Order</button>
-                                    <div class="dbId" style="display: none;"><%="#{i.id}"%></div>
-                                </div>
-                            </div>
-                        </li>
-                        <% b += 1 %>
-                        <% end %>
-                    </ul>
-                </div>
-            </div>
+  <div class="h_container">
+    <div class="h_logo">Vinlass</div>
+    <div class="info_bar">
+      <a class="info_bar_link" href="">Main page</a>
+      <a class="info_bar_link" href="">Our work time</a>
+      <a class="info_bar_link" href="">Menu</a>
+      <a class="info_bar_link" href="">Conctacts</a>
+    </div>
+  </div>
+</header>
+<div class="content_container">
+  <div class="content_page">
+    <div class="scrollBtn">up</div>
+    <div class="basket_container">
+      <div class="basket_amount">0</div>
+      <button class="basket_icon">
+        <%=image_tag("basket.png", width: "40", height: "40", alt: "Basket")%>
+      </button>
+    </div>
+    <div class="basket">
+      <div class="basket_content">
+        <div class="start_bar"></div>
+        <div class="end_bar">
+          <div class="end_container">
+            <%=form_tag create_path, method: :post do %>
+              <div class="container_form">
+                <label><b>Name </b><span class="prompt">(length: 3-9, capital first letter)</span></label>
+                <input id="name" name="name" type="text" placeholder="Enter Name" required pattern="[A-Z][a-z]{2,10}">
+                <label><b>Number </b><span class="prompt">(length: 7)</span></label>
+                <input id="number" name="phone"  type="text" placeholder="Enter Number" required pattern="\d{7}">
+                <label><b>Adress</b></label>
+                <input id="adress" name="adress" type="text" placeholder="Enter Adress" required>
+                <button class="end_bar_btn" type="submit">Order</button>
+                <label class="final_price_label">Total price: 0 $</label>
+              </div>
+            <% end %>
+          </div>
         </div>
+      </div>
+    </div>
+    <div class="goods_nav">
+      <button data-f="all" class="btn_goods_nav">All</button>
+      <button data-f="pizza" class="btn_goods_nav">Pizza</button>
+      <button data-f="burger" class="btn_goods_nav">Burgers</button>
+      <button data-f="drink" class="btn_goods_nav">Drinks</button>
+      <button data-f="sushi" class="btn_goods_nav">Sushi</button>
+      <button data-f="cake" class="btn_goods_nav">Cakes</button>
+    </div>
+    <ul class="goods_ul">
+      <% b = 0 %>
+      <% @good.map do |i| %>
+        <li class="good_container <%="#{i.category}"%>">
+          <div class="good_top">
+            <div class="good_contant">
+              <% if i.img != nil %>
+                <%= image_tag(i.img, size: "200", class: "imgG g"+"#{b+1}", data: { i: "#{b+1}"}) %>
+              <% else %>
+                <%= image_tag(i.storage_image, size: "200", class: "imgG g"+"#{b+1}", data: { i: "#{b+1}"}) if i.storage_image.attached?%>
+              <% end %>
+            </div>
+            <div class="good_contant">
+              <span class="discriptionG g<%="#{b+1}"%>" data-i="<%="#{b+1}"%>">
+                <p class="back_to_img">Show image</p><%="#{i.discription}"%>
+              </span>
+            </div>
+          </div>
+          <div class="good_bottom">
+            <div class="good_contant">
+              <h3 class="nameG"><%="#{i.name}"%></h3>
+            </div>
+            <div class="good_contant">
+              Price: <span class="priceG"><%="#{i.price}"%></span> $
+            </div>
+            <div class="good_contant">
+              Weight: ~<span class="weightG"><%="#{i.weight}"%></span>
+            </div>
+            <div class="good_contant">
+              <button class="btn idG" id="<%="#{b+1}"%>">Order</button>
+              <div class="dbId" style="display: none;"><%="#{i.id}"%></div>
+            </div>
+          </div>
+        </li>
+        <% b += 1 %>
+      <% end %>
+    </ul>
+  </div>
+</div>
 
 <%= javascript_pack_tag 'main', 'data-turbolinks-track': 'reload' %>

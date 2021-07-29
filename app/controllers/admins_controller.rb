@@ -1,9 +1,8 @@
 class AdminsController < ApplicationController
-
   before_action :admin
 
   def admin
-    render 'main/not_accepted' unless (user_signed_in? && current_user.try(:admin?))
+    render 'main/not_accepted' unless user_signed_in? && current_user.try(:admin?)
   end
 
   def orders
