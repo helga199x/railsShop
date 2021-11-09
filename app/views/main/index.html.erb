@@ -1,5 +1,5 @@
 <%= stylesheet_link_tag 'main', media: 'all', 'data-turbolinks-track': 'reload' %>
-<%= render 'include/auth/auth_div' %>
+
 <header class="header">
   <div class="h_container">
     <div class="h_logo">Vinlass</div>
@@ -8,11 +8,18 @@
       <a class="info_bar_link" href="">Our work time</a>
       <a class="info_bar_link" href="">Menu</a>
       <a class="info_bar_link" href="">Conctacts</a>
+      <% if user_signed_in? == false %>
+        <%= render 'include/auth/auth_div' %>
+      <% end%>
     </div>
   </div>
 </header>
 <div class="content_container">
   <div class="content_page">
+    <% if user_signed_in? %>
+      <%= render 'include/auth/auth_div' %>
+    <% end%>
+    <%= render 'include/main/notification_html' %>
     <div class="scrollBtn">up</div>
     <div class="basket_container">
       <div class="basket_amount">0</div>
